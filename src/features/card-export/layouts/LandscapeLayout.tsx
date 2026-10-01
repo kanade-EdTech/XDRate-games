@@ -71,6 +71,7 @@ export function LandscapeLayout({
                 legendColumns={layoutPlan.legendColumns}
                 scale={layoutPlan.chartScale}
                 size={layoutPlan.chartSize}
+                fillHeight
               />
             )}
           </div>

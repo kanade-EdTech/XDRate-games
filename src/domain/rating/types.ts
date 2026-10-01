@@ -9,6 +9,8 @@ export interface WorkMetadataEntry {
 }
 
 export interface WorkMetadata {
+  /** Optional product label used by vertical domain cards. */
+  productLabel?: string;
   title: string;
   artistLabel: string | null;
   artist: string;

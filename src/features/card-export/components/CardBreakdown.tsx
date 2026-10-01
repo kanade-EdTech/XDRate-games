@@ -12,7 +12,7 @@ function formatScore(score: number): string {
   return score.toFixed(1);
 }
 
-export function CardBreakdown({ axes, dark, maxItems = 8, columns = 2 }: CardBreakdownProps) {
+export function CardBreakdown({ axes, dark, maxItems = 12, columns = 2 }: CardBreakdownProps) {
   const { t } = useI18n();
   const textColor = dark ? 'text-white' : 'text-slate-900';
   const mutedColor = dark ? 'text-slate-300' : 'text-slate-600';

@@ -57,7 +57,32 @@ export interface CardLayoutPlan {
 }
 
 export type OverflowRegionId =
-  'header' | 'chart' | 'axes' | 'reasons' | 'comment' | 'story' | 'footer' | 'card';
+  'header' | 'score' | 'chart' | 'axes' | 'reasons' | 'comment' | 'story' | 'footer' | 'card';
+
+export interface CardLayoutBox {
+  id: string;
+  region: OverflowRegionId;
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+  width: number;
+  height: number;
+  ancestorIds: string[];
+}
+
+export interface CardLayoutCollision {
+  firstRegion: OverflowRegionId;
+  secondRegion: OverflowRegionId;
+  overlapWidth: number;
+  overlapHeight: number;
+}
+
+export interface CardLayoutAudit {
+  boxes: CardLayoutBox[];
+  collisions: CardLayoutCollision[];
+  outOfBounds: OverflowRegionId[];
+}
 
 export interface OverflowIssue {
   region: OverflowRegionId;
@@ -67,6 +92,8 @@ export interface OverflowIssue {
 export interface CardOverflowResult {
   hasOverflow: boolean;
   issues: OverflowIssue[];
+  collisions?: CardLayoutCollision[];
+  outOfBounds?: OverflowRegionId[];
 }
 
 export interface BaseCardLayoutProps {

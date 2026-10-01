@@ -46,7 +46,7 @@ export function CardAxisReasons({
   return (
     <section
       data-card-region="reasons"
-      className={`rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
+      className={`h-full min-h-0 overflow-hidden rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
         dark ? 'border border-white/10 bg-white/5' : 'border border-slate-200/60 bg-white/80'
       }`}
     >

@@ -15,7 +15,7 @@ import { detectCardOverflow } from './detectOverflow';
 import { LandscapeLayout } from './layouts/LandscapeLayout';
 import { PortraitLayout } from './layouts/PortraitLayout';
 import { SquareLayout } from './layouts/SquareLayout';
-import { profileCardContent, resolveCardLayout } from './layoutPlan';
+import { profileCardContent, resolveCardLayout } from './layoutEngine';
 import { StandardLayout } from './layouts/StandardLayout';
 import { getRatioConfig } from './ratioConfig';
 import type { CardOptions, CardOverflowResult, CardRatio, CardTheme } from './types';
@@ -201,6 +201,10 @@ export function CardPreview({
         <div
           ref={cardRef}
           data-card-region="card"
+          data-layout-engine="v1"
+          data-layout-family={config.family}
+          data-layout-density={layoutPlan.density}
+          data-layout-fallback={layoutPlan.fallbackLevel}
           className={`card-canvas relative isolate flex select-none flex-col ${
             dark ? 'bg-slate-950 text-slate-50' : 'bg-slate-50 text-slate-950'
           }`}

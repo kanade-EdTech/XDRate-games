@@ -50,11 +50,11 @@ export function CardNarrative({
   }
 
   return (
-    <div className="space-y-3">
+    <div className="flex h-full min-h-0 flex-col gap-3 overflow-hidden">
       {commentTrimmed && (
         <div
           data-card-region="comment"
-          className={`rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
+          className={`min-h-0 flex-1 overflow-hidden rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
             dark ? 'border border-white/10 bg-white/5' : 'border border-slate-200/60 bg-white/80'
           }`}
         >
@@ -82,7 +82,7 @@ export function CardNarrative({
       {showStory && storyTrimmed && (
         <div
           data-card-region="story"
-          className={`rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
+          className={`min-h-0 flex-1 overflow-hidden rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
             dark ? 'border border-white/10 bg-white/5' : 'border border-slate-200/60 bg-white/80'
           }`}
         >

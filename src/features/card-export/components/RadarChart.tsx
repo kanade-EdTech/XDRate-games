@@ -1,5 +1,6 @@
 import type { RatingAxis } from '../../../domain/rating/types';
 import { useI18n } from '../../../i18n/useI18n';
+import { getRadarDisplayAxes } from './radarAxes';
 
 interface RadarChartProps {
   axes: RatingAxis[];
@@ -25,7 +26,7 @@ export function RadarChart({
   fillHeight = false,
 }: RadarChartProps) {
   const { t } = useI18n();
-  const displayAxes = axes.slice(0, 8);
+  const displayAxes = getRadarDisplayAxes(axes);
   const count = displayAxes.length;
 
   const size = explicitSize ?? Math.round((compact ? 200 : 240) * scale);
@@ -50,7 +51,7 @@ export function RadarChart({
   return (
     <figure
       data-card-region="chart"
-      className={`flex flex-col justify-between rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
+      className={`flex min-h-0 max-h-full flex-col justify-between overflow-hidden rounded-2xl p-4 shadow-sm backdrop-blur-sm ${
         fillHeight ? 'h-full ' : ''
       }${dark ? 'border border-white/10 bg-white/5' : 'border border-slate-200/60 bg-white/80'}`}
     >
@@ -62,14 +63,14 @@ export function RadarChart({
         {t('card.radarDescription')}
       </figcaption>
 
-      <div className="my-auto flex flex-col items-center justify-center gap-4">
+      <div className="my-auto flex min-h-0 flex-1 flex-col items-center justify-center gap-4 overflow-hidden">
         {/* SVG Graphic with pure shapes and vertex markers */}
-        <div className="relative shrink-0">
+        <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden">
           <svg
             viewBox={`0 0 ${size} ${size}`}
             width={size}
             height={size}
-            className="h-auto max-w-full overflow-visible"
+            className="h-auto max-h-full max-w-full"
             role="img"
             aria-label={t('card.radarDescription')}
           >
@@ -132,7 +133,7 @@ export function RadarChart({
         </div>
 
         {/* Independent Axis Legend */}
-        <div className="w-full min-w-0 flex-1">
+        <div className="w-full min-w-0 shrink-0">
           <div
             className={`grid ${
               legendColumns === 2 ? 'grid-cols-2 gap-x-3 gap-y-1.5' : 'grid-cols-1 gap-y-1.5'

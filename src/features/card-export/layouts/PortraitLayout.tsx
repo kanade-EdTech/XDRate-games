@@ -35,11 +35,11 @@ export function PortraitLayout({
         display: 'grid',
         gridTemplateRows: hasNarrative
           ? hasReasons
-            ? 'auto auto auto 1fr 32px'
-            : 'auto auto 1fr 32px'
+            ? 'auto minmax(0, 0.9fr) minmax(0, 0.85fr) minmax(96px, 0.65fr) 32px'
+            : 'auto minmax(0, 1fr) minmax(96px, 0.65fr) 32px'
           : hasReasons
-            ? 'auto auto 1fr 32px'
-            : 'auto auto 1fr 32px',
+            ? 'auto minmax(0, 0.9fr) minmax(0, 1fr) 32px'
+            : 'auto minmax(0, 0.9fr) minmax(0, 1fr) 32px',
         padding: isNarrow ? '32px 36px' : '36px 40px',
         gap: isNarrow ? '14px' : '16px',
       }}
@@ -67,6 +67,7 @@ export function PortraitLayout({
                   compact={isNarrow}
                   legendColumns={1}
                   size={layoutPlan.chartSize}
+                  fillHeight
                 />
               )}
             </div>
@@ -118,6 +119,7 @@ export function PortraitLayout({
                   compact={isNarrow}
                   legendColumns={1}
                   size={layoutPlan.chartSize}
+                  fillHeight
                 />
               )}
             </div>

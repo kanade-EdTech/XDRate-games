@@ -26,6 +26,7 @@ export function CardScoreBadge({ draft, rating, dark, compact = false }: CardSco
 
   return (
     <div
+      data-card-region="score"
       className={`flex flex-col justify-between rounded-2xl p-5 shadow-sm backdrop-blur-sm ${
         dark ? 'border border-white/10 bg-white/5' : 'border border-slate-200/60 bg-white/80'
       }`}

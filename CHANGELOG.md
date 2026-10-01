@@ -2,6 +2,21 @@
 
 All notable changes are documented here.
 
+## 0.5.0 — Game-rating pilot
+
+### Added
+
+- Independent XDRate Games entry and Toy build with four covered personal-rating templates.
+- Eleven-ratio game card preview and 2× PNG export with save/share recovery.
+- Optional platform and version fields plus an editable release-information label, defaulting to “工作室”.
+- Horizontal icon-only template picker with Black Myth: Wukong selected by default; details open on click.
+
+### Validation
+
+- Game domain and card tests: 26/26 passed.
+- Game Toy mobile and desktop smoke tests: 4/4 passed.
+- Toy build: 73 modules; content audit: 0 errors and one known `html-to-image` helper warning.
+
 ## 0.4.1 — Sharing optimization continuation
 
 ### Added
@@ -24,12 +39,13 @@ All notable changes are documented here.
 - Plan v1.1.0 as the WeChat Mini Program adaptation.
 - Defer the standalone Android/iOS App entity, native packages, and store release to v2.0.0.
 
-## Unreleased — Bili Toy adaptation
+## 0.4.1 — Bili Toy delivery note
 
-### Planned
+### Completed
 
-- Adapt the current v0.3.1 offline rating-card flow into an isolated Bili Toy build before v0.4.0 sharing-completion work.
-- Add relative-resource/subpath audits, `toy_doctor.py` content preflight, package manifests, and a JSON preview-before-review gate.
+- Adapt the current offline rating-card flow into an isolated Bili Toy build while preserving the existing `XDRateMusic` slug.
+- Complete relative-resource/subpath audits, `toy_doctor.py` content preflight, package manifests, and the JSON preview-before-review gate.
+- Submit the verified 0.4.1 package for Toy review; approval remains an external platform decision and is not claimed as public publication here.
 - Keep Xiaohongshu Bridge capabilities, Bilibili cloud services, and native mobile APIs out of the first Toy candidate.
 
 ## 0.3.3 — Toy interaction repair

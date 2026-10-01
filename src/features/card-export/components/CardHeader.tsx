@@ -47,7 +47,7 @@ export function CardHeader({ work, dark, compact = false }: CardHeaderProps) {
             dark ? 'text-indigo-400' : 'text-indigo-600'
           }`}
         >
-          XDRate Music
+          {work.productLabel?.trim() || 'XDRate Music'}
         </p>
         <h3
           className={`mt-2 line-clamp-2 break-words text-2xl font-black leading-tight sm:text-3xl ${textColor}`}
