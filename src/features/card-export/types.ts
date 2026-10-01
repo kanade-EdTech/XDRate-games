@@ -104,4 +104,5 @@ export interface BaseCardLayoutProps {
   dark: boolean;
   visibleAxes: RatingAxis[];
   layoutPlan: CardLayoutPlan;
+  algorithmVersion: string;
 }

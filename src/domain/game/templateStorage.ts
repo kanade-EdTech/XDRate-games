@@ -25,6 +25,34 @@ export type GameTemplateCatalogLoadResult =
 
 export type GameTemplateCatalogSaveResult = 'saved' | 'invalid' | 'too-large' | 'unavailable';
 
+function migrateSeededDefaults(catalog: GameTemplateCatalog): GameTemplateCatalog {
+  let changed = false;
+  const templates = catalog.templates.map((template) => {
+    if (template.id !== 'game-example-long-title' || template.source !== 'seeded-example') {
+      return template;
+    }
+    const axes = template.rating.axes.map((axis) => {
+      if (axis.id !== 'red-alert-world') return axis;
+      if (
+        axis.score === 5 &&
+        axis.importanceLevel === 2 &&
+        axis.reason === '无厘头剧情毁童年'
+      ) {
+        return axis;
+      }
+      changed = true;
+      return {
+        ...axis,
+        score: 5,
+        importanceLevel: 2 as const,
+        reason: '无厘头剧情毁童年',
+      };
+    });
+    return changed ? { ...template, rating: { ...template.rating, axes } } : template;
+  });
+  return changed ? { ...catalog, templates } : catalog;
+}
+
 export type GameTemplateCatalogInitializeResult =
   | { status: 'seeded'; catalog: GameTemplateCatalog }
   | { status: 'restored'; catalog: GameTemplateCatalog }
@@ -178,7 +206,14 @@ export function initializeGameTemplateCatalog(
 ): GameTemplateCatalogInitializeResult {
   const loaded = loadGameTemplateCatalog(storage);
   const seeded = createSeededGameTemplateCatalog(timestamp);
-  if (loaded.status === 'restored') return loaded;
+  if (loaded.status === 'restored') {
+    const catalog = migrateSeededDefaults(loaded.catalog);
+    if (catalog !== loaded.catalog) {
+      saveGameTemplateCatalog(storage, catalog);
+      return { status: 'migrated', catalog };
+    }
+    return loaded;
+  }
   if (loaded.status === 'migrated') {
     saveGameTemplateCatalog(storage, loaded.catalog);
     return loaded;

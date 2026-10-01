@@ -1,12 +1,12 @@
-import { ratingAlgorithmVersion } from '../../../domain/rating/calculateRating';
 import { useI18n } from '../../../i18n/useI18n';
 
 interface CardFooterProps {
   dark: boolean;
   signature?: string;
+  algorithmVersion: string;
 }
 
-export function CardFooter({ dark, signature }: CardFooterProps) {
+export function CardFooter({ dark, signature, algorithmVersion }: CardFooterProps) {
   const { t } = useI18n();
   const mutedColor = dark ? 'text-slate-400' : 'text-slate-500';
 
@@ -18,7 +18,7 @@ export function CardFooter({ dark, signature }: CardFooterProps) {
       <span className="whitespace-nowrap">
         {signature?.trim() ? signature.trim() : t('card.disclaimer')}
       </span>
-      <span className="whitespace-nowrap">XDRate · {ratingAlgorithmVersion}</span>
+      <span className="whitespace-nowrap">XDRate · {algorithmVersion}</span>
     </footer>
   );
 }

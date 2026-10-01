@@ -8,7 +8,7 @@ import {
   type RefObject,
 } from 'react';
 
-import { isRatedAxis } from '../../domain/rating/calculateRating';
+import { isRatedAxis, ratingAlgorithmVersion } from '../../domain/rating/calculateRating';
 import type { MusicRatingDraft, RatingResult } from '../../domain/rating/types';
 import { useI18n } from '../../i18n/useI18n';
 import { detectCardOverflow } from './detectOverflow';
@@ -26,6 +26,7 @@ interface CardPreviewProps {
   cardRef: RefObject<HTMLDivElement | null>;
   draft: MusicRatingDraft;
   rating: RatingResult;
+  algorithmVersion?: string;
   options: CardOptions;
   onOverflowChange?: (result: CardOverflowResult) => void;
   onReadyChange?: (ready: boolean) => void;
@@ -35,6 +36,7 @@ export function CardPreview({
   cardRef,
   draft,
   rating,
+  algorithmVersion = ratingAlgorithmVersion,
   options,
   onOverflowChange,
   onReadyChange,
@@ -168,7 +170,16 @@ export function CardPreview({
   const scale = containerWidth > 0 ? containerWidth / config.width : 1;
   const scaledHeight = Math.round(config.height * scale);
 
-  const layoutProps = { draft, rating, options, config, dark, visibleAxes, layoutPlan };
+  const layoutProps = {
+    draft,
+    rating,
+    options,
+    config,
+    dark,
+    visibleAxes,
+    layoutPlan,
+    algorithmVersion,
+  };
 
   return (
     <div

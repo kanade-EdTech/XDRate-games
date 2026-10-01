@@ -1,5 +1,6 @@
 import type { GameAxisDefinition, GameDomainDefinition, GameWorkMetadata } from './types';
 import { gameDomainId } from './types';
+import { gameRatingAlgorithmVersion } from './calculateGameRating';
 
 export const gameAxisDefinitions: readonly GameAxisDefinition[] = [
   {
@@ -46,7 +47,7 @@ export const gameTemplateInventoryIds = [
 export const gameDomainDefinition: GameDomainDefinition = {
   id: gameDomainId,
   label: '游戏评分试验',
-  algorithmVersion: 'music-linear-100-v4',
+  algorithmVersion: gameRatingAlgorithmVersion,
   axisDefinitions: gameAxisDefinitions,
   templateIds: gameTemplateInventoryIds,
 };

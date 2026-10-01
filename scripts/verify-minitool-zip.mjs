@@ -188,7 +188,7 @@ async function main() {
   const sourceDirty = Boolean(gitOutput(['status', '--porcelain', '--untracked-files=all']));
   const manifest = {
     schemaVersion: 1,
-    product: 'XDRate Music MiniTool',
+    product: channel === 'game-minitool' ? 'XDRate Games MiniTool' : 'XDRate Music MiniTool',
     version,
     channel,
     package: basename(zipPath),

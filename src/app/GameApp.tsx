@@ -40,7 +40,7 @@ export function GameApp({ cardSurface = 'browser' }: GameAppProps) {
               className="text-right text-xs font-medium text-slate-500 dark:text-slate-400"
               data-testid="app-version"
             >
-              游戏试验版 0.5.0 · {appMetadata.publisher} ·{' '}
+              游戏试验版 {appMetadata.version} · {appMetadata.publisher} ·{' '}
               {platformServices.runtime.kind === 'desktop' ? '桌面模式' : '浏览器 / Toy 模式'}
             </p>
           </div>

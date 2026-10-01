@@ -17,6 +17,7 @@ import {
   type GameTemplateStorageLike,
 } from '../../domain/game/templateStorage';
 import type { GameRatingDraft, GameTemplateDefinition } from '../../domain/game/types';
+import { appMetadata } from '../../config/appMetadata';
 import { GameDraftEditor } from './GameDraftEditor';
 import { GameCardExport } from './GameCardExport';
 import type { GameCardSurface } from './gameCardSurface';
@@ -266,7 +267,7 @@ export function GameRatingPilot({ cardSurface = 'browser' }: { cardSurface?: Gam
     <section className="mt-8 space-y-6" aria-labelledby="game-pilot-title">
       <div className="rounded-2xl border border-cyan-200 bg-cyan-50 p-6 dark:border-cyan-900 dark:bg-cyan-950/40">
         <p className="text-sm font-semibold tracking-wide text-cyan-700 dark:text-cyan-300">
-          XDRATE · GAME PILOT 0.5.0
+          XDRATE · GAME PILOT {appMetadata.version}
         </p>
         <h2
           id="game-pilot-title"
@@ -292,7 +293,7 @@ export function GameRatingPilot({ cardSurface = 'browser' }: { cardSurface?: Gam
           <div>
             <h3 className="font-bold text-slate-950 dark:text-white">游戏模板</h3>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-              点击图标查看详情；默认从黑神话：悟空开始。标准空白模板用于清空到最基础的自定义状态。
+              选择图标后可套用模板；默认从黑神话：悟空开始。标准空白模板用于清空到最基础的自定义状态。
             </p>
           </div>
           <div className="flex shrink-0 flex-col items-end gap-2">
@@ -322,7 +323,7 @@ export function GameRatingPilot({ cardSurface = 'browser' }: { cardSurface?: Gam
                 type="button"
                 role="listitem"
                 aria-pressed={selected}
-                aria-label={`查看模板：${template.name}`}
+                aria-label={`选择模板：${template.name}`}
                 className={`group shrink-0 snap-start rounded-2xl border p-1 transition ${
                   selected
                     ? 'border-cyan-500 ring-2 ring-cyan-200 dark:ring-cyan-900'

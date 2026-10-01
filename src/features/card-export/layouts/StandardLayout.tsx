@@ -15,6 +15,7 @@ export function StandardLayout({
   dark,
   visibleAxes,
   layoutPlan,
+  algorithmVersion,
 }: BaseCardLayoutProps) {
   const hasNarrative = layoutPlan.hasNarrative;
 
@@ -85,7 +86,11 @@ export function StandardLayout({
       </div>
 
       <div className="shrink-0">
-        <CardFooter dark={dark} signature={draft.personalSignature} />
+        <CardFooter
+          dark={dark}
+          signature={draft.personalSignature}
+          algorithmVersion={algorithmVersion}
+        />
       </div>
     </div>
   );

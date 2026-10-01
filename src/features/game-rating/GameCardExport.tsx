@@ -1,7 +1,10 @@
 import { useMemo, useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
 
-import { calculateRating } from '../../domain/rating/calculateRating';
+import {
+  calculateGameRating,
+  gameRatingAlgorithmVersion,
+} from '../../domain/game/calculateGameRating';
 import type { MusicRatingDraft } from '../../domain/rating/types';
 import type { GameRatingDraft } from '../../domain/game/types';
 import { platformServices } from '../../platform';
@@ -88,7 +91,7 @@ export function GameCardExport({
   const [lastImage, setLastImage] = useState<{ dataUrl: string; snapshot: string } | null>(null);
   const [shareChoiceOpen, setShareChoiceOpen] = useState(false);
   const cardDraft = useMemo(() => toCardDraft(draft), [draft]);
-  const rating = useMemo(() => calculateRating(cardDraft), [cardDraft]);
+  const rating = useMemo(() => calculateGameRating(draft), [draft]);
   const snapshot = useMemo(() => JSON.stringify({ draft, options }), [draft, options]);
 
   function persistSnapshot() {
@@ -262,6 +265,7 @@ export function GameCardExport({
           cardRef={cardRef}
           draft={cardDraft}
           rating={rating}
+          algorithmVersion={gameRatingAlgorithmVersion}
           options={options}
           onOverflowChange={setOverflow}
           onReadyChange={setReady}

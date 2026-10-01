@@ -57,12 +57,17 @@ describe('game template catalog M1', () => {
     expect(template.rating.axes[0].score).toBe(8);
   });
 
-  it('keeps the Red Alert official worldview preset at 6 with level 2 weight', () => {
+  it('keeps the Red Alert official worldview preset at 5 with level 2 weight', () => {
     const redAlert = createSeededGameTemplateCatalog().templates.find(
       (template) => template.id === 'game-example-long-title',
     );
     const worldview = redAlert?.rating.axes.find((axis) => axis.id === 'red-alert-world');
-    expect(worldview).toMatchObject({ name: '官方剧情世界观', score: 6, importanceLevel: 2 });
+    expect(worldview).toMatchObject({
+      name: '官方剧情世界观',
+      score: 5,
+      importanceLevel: 2,
+      reason: '无厘头剧情毁童年',
+    });
   });
 
   it('copies, renames, and deletes without mutating the original catalog', () => {

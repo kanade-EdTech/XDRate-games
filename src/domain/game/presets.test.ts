@@ -3,9 +3,9 @@ import { gameAxisDefinitions, gameDomainDefinition, gameTemplateInventoryIds } f
 import { gameTemplateInventory } from './templateInventory';
 
 describe('game domain M0 contract', () => {
-  it('defines stable axis ids and a shared algorithm contract', () => {
+  it('defines stable axis ids and a game-specific algorithm contract', () => {
     expect(gameDomainDefinition.id).toBe('game');
-    expect(gameDomainDefinition.algorithmVersion).toBe('music-linear-100-v4');
+    expect(gameDomainDefinition.algorithmVersion).toBe('game-linear-100-v1');
     expect(new Set(gameAxisDefinitions.map((axis) => axis.id)).size).toBe(
       gameAxisDefinitions.length,
     );

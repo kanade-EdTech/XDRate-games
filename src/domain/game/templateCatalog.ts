@@ -71,7 +71,7 @@ export function createSeededGameTemplates(
   redAlert.axes = [
     axis('red-alert-preference', '个人喜好', 9, 5, '从童年玩到现在，十多年了'),
     axis('red-alert-community', '圈子融入', 7, 3, '对战圈和制作圈都有一堆怪人'),
-    axis('red-alert-world', '官方剧情世界观', 6, 2, ''),
+    axis('red-alert-world', '官方剧情世界观', 5, 2, '无厘头剧情毁童年'),
     axis('red-alert-tactics', '官方战术设计', 8, 4, '颇有深度'),
     axis('red-alert-fan', '同人生态', 8, 4, ''),
   ];

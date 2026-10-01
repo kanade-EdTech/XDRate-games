@@ -58,7 +58,7 @@ export interface GameAxisDefinition {
 export interface GameDomainDefinition {
   id: typeof gameDomainId;
   label: string;
-  algorithmVersion: 'music-linear-100-v4';
+  algorithmVersion: 'game-linear-100-v1';
   axisDefinitions: readonly GameAxisDefinition[];
   templateIds: readonly string[];
 }

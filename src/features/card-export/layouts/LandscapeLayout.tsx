@@ -15,6 +15,7 @@ export function LandscapeLayout({
   dark,
   visibleAxes,
   layoutPlan,
+  algorithmVersion,
 }: BaseCardLayoutProps) {
   const isCompact = config.ratio === '16:9';
   const hasNarrative = layoutPlan.hasNarrative;
@@ -91,7 +92,11 @@ export function LandscapeLayout({
       </div>
 
       <div className="shrink-0">
-        <CardFooter dark={dark} signature={draft.personalSignature} />
+        <CardFooter
+          dark={dark}
+          signature={draft.personalSignature}
+          algorithmVersion={algorithmVersion}
+        />
       </div>
     </div>
   );

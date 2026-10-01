@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { calculateRating } from '../../domain/rating/calculateRating';
+import { calculateGameRating } from '../../domain/game/calculateGameRating';
 import type { ImportanceLevel, NegativeItem, RatingAxis } from '../../domain/rating/types';
 import type { GameRatingDraft } from '../../domain/game/types';
 
@@ -36,7 +36,7 @@ function updateNegative(draft: GameRatingDraft, id: string, patch: Partial<Negat
 }
 
 export function GameDraftEditor({ draft, onChange }: GameDraftEditorProps) {
-  const rating = useMemo(() => calculateRating(draft), [draft]);
+  const rating = useMemo(() => calculateGameRating(draft), [draft]);
 
   function updateWork(
     field: 'title' | 'platform' | 'version' | 'releaseLabel' | 'releaseNote',
@@ -87,7 +87,10 @@ export function GameDraftEditor({ draft, onChange }: GameDraftEditorProps) {
             <span className="block text-xs font-semibold text-cyan-700 dark:text-cyan-300">
               综合分
             </span>
-            <strong className="text-3xl tabular-nums text-cyan-800 dark:text-cyan-200">
+            <strong
+              className="text-3xl tabular-nums text-cyan-800 dark:text-cyan-200"
+              data-testid="game-aggregate-score"
+            >
               {rating.status === 'ready' ? rating.score100.toFixed(1) : '—'}
             </strong>
             <span className="ml-1 text-sm text-cyan-700 dark:text-cyan-300">/100</span>
@@ -260,7 +263,7 @@ export function GameDraftEditor({ draft, onChange }: GameDraftEditorProps) {
           <div>
             <h3 className="text-lg font-bold text-slate-950 dark:text-white">扣分项（可选）</h3>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-              扣分值使用负数，最终分数最低为 0。
+              直接填写百分制扣分：-3 表示从综合分扣 3 分，最终分数最低为 0。
             </p>
           </div>
           <button type="button" className="button-secondary" onClick={addNegative}>

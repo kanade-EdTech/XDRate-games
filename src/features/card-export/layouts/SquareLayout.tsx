@@ -25,6 +25,7 @@ export function SquareLayout({
   dark,
   visibleAxes,
   layoutPlan,
+  algorithmVersion,
 }: BaseCardLayoutProps) {
   const hasNarrative = layoutPlan.hasNarrative;
   const hasReasons = options.showReasons && visibleAxes.length > 0;
@@ -143,7 +144,11 @@ export function SquareLayout({
 
       {/* Row 2 — Footer */}
       <div className="flex min-h-0 items-center overflow-hidden">
-        <CardFooter dark={dark} signature={draft.personalSignature} />
+        <CardFooter
+          dark={dark}
+          signature={draft.personalSignature}
+          algorithmVersion={algorithmVersion}
+        />
       </div>
     </div>
   );

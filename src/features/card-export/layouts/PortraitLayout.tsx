@@ -23,6 +23,7 @@ export function PortraitLayout({
   dark,
   visibleAxes,
   layoutPlan,
+  algorithmVersion,
 }: BaseCardLayoutProps) {
   const isNarrow = config.ratio === '9:16' || config.ratio === '5:8';
   const hasNarrative = layoutPlan.hasNarrative;
@@ -162,7 +163,11 @@ export function PortraitLayout({
 
       {/* Row 4 — Footer (fixed 32px track) */}
       <div className="flex min-h-0 items-center overflow-hidden">
-        <CardFooter dark={dark} signature={draft.personalSignature} />
+        <CardFooter
+          dark={dark}
+          signature={draft.personalSignature}
+          algorithmVersion={algorithmVersion}
+        />
       </div>
     </div>
   );

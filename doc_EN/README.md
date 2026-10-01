@@ -2,8 +2,8 @@
 
 > This repository is the independent game-rating workspace. The music product lives in `XDRate-music`; the game entry must not reuse the music page shell.
 
-Status: G0 entry, G1 templates, G2 card, G3 save-share loop, and G4 Toy engineering acceptance complete; game MiniTool adaptation planned<br>
-Last updated: 2026-09-27
+Status: G0–G4 and the game MiniTool adaptation are complete; v0.5.1 corrects game deduction semantics<br>
+Last updated: 2026-10-01
 
 ## 1. Purpose
 
@@ -15,16 +15,17 @@ XDRate Games is an open-source, offline-first game-rating and image-generation t
 
 ## Independent repository plan
 
-| Document                                                                                                     | Contents                                                                      |
-| ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| [XDRate Games Independent Repository Plan](./00_XDRATE_GAMES_INDEPENDENT_REPOSITORY_PLAN.md)                 | Product boundary, G0–G4 milestones, code split, and release roadmap           |
-| [V0.5.0 G0 Independent Entry Execution Log](./45_V0.5.0_G0_INDEPENDENT_ENTRY_EXECUTION_LOG.md)               | Game shell, Toy entry, build, and audit evidence                              |
-| [V0.5.0 G1 Game Rating Editor Execution Log](./46_V0.5.0_G1_GAME_RATING_EDITOR_EXECUTION_LOG.md)             | Work metadata, axes, deductions, signatures, and draft recovery               |
-| [V0.5.0 G2 Game Card and Export Execution Log](./47_V0.5.0_G2_GAME_CARD_AND_EXPORT_EXECUTION_LOG.md)         | Eleven ratios, preview, overflow checks, and PNG export                       |
-| [V0.5.0 G3 Save, Share, and Recovery Execution Log](./48_V0.5.0_G3_SAVE_SHARE_AND_RECOVERY_EXECUTION_LOG.md) | Pre-export snapshot, save/share, failure taxonomy, and cancellation recovery  |
-| [V0.5.0 G4 Toy Acceptance Execution Log](./49_V0.5.0_G4_TOY_ACCEPTANCE_EXECUTION_LOG.md)                     | Mobile/desktop smoke, build audit, manual preview checklist, and release gate |
-| [V0.5.0 MiniTool Game Adaptation Plan](./50_V0.5.0_MINITOOL_GAME_ADAPTATION_PLAN.md)                          | Independent game MiniTool entry, album Bridge, eleven ratios, audit, and device acceptance |
-| [V0.5.0 MiniTool Game Adaptation Execution Log](./51_V0.5.0_MINITOOL_GAME_ADAPTATION_EXECUTION_LOG.md)       | M0–M1 entry, Bridge, build, ZIP, and automated evidence |
+| Document                                                                                                     | Contents                                                                                   |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| [XDRate Games Independent Repository Plan](./00_XDRATE_GAMES_INDEPENDENT_REPOSITORY_PLAN.md)                 | Product boundary, G0–G4 milestones, code split, and release roadmap                        |
+| [V0.5.0 G0 Independent Entry Execution Log](./45_V0.5.0_G0_INDEPENDENT_ENTRY_EXECUTION_LOG.md)               | Game shell, Toy entry, build, and audit evidence                                           |
+| [V0.5.0 G1 Game Rating Editor Execution Log](./46_V0.5.0_G1_GAME_RATING_EDITOR_EXECUTION_LOG.md)             | Work metadata, axes, deductions, signatures, and draft recovery                            |
+| [V0.5.0 G2 Game Card and Export Execution Log](./47_V0.5.0_G2_GAME_CARD_AND_EXPORT_EXECUTION_LOG.md)         | Eleven ratios, preview, overflow checks, and PNG export                                    |
+| [V0.5.0 G3 Save, Share, and Recovery Execution Log](./48_V0.5.0_G3_SAVE_SHARE_AND_RECOVERY_EXECUTION_LOG.md) | Pre-export snapshot, save/share, failure taxonomy, and cancellation recovery               |
+| [V0.5.0 G4 Toy Acceptance Execution Log](./49_V0.5.0_G4_TOY_ACCEPTANCE_EXECUTION_LOG.md)                     | Mobile/desktop smoke, build audit, manual preview checklist, and release gate              |
+| [V0.5.0 MiniTool Game Adaptation Plan](./50_V0.5.0_MINITOOL_GAME_ADAPTATION_PLAN.md)                         | Independent game MiniTool entry, album Bridge, eleven ratios, audit, and device acceptance |
+| [V0.5.0 MiniTool Game Adaptation Execution Log](./51_V0.5.0_MINITOOL_GAME_ADAPTATION_EXECUTION_LOG.md)       | M0–M1 entry, Bridge, build, ZIP, and automated evidence                                    |
+| [V0.5.1 Game Deduction Semantics Correction Log](./52_V0.5.1_GAME_DEDUCTION_SEMANTICS_CORRECTION_LOG.md)     | `game-linear-100-v1`, Red Alert 76.0 golden case, and regression evidence                  |
 
 > The confirmed bilingual product names are “多维音乐评价” and `XDRate Music`. Future vertical products follow “多维{领域}评价” / `XDRate {Domain}`; see the [Decision Log](./08_DECISIONS_AND_OPEN_QUESTIONS.md).
 

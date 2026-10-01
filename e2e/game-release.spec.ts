@@ -128,6 +128,20 @@ test('standard blank template clears to the minimal custom state without changin
   );
 });
 
+test('Red Alert uses direct percentage-point deductions in editor and exported card', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const templates = page.getByLabel('游戏模板');
+  await templates.getByRole('listitem').last().click();
+  await expect(page.getByRole('heading', { name: '红色警戒 2 · 个人评价' })).toBeVisible();
+  await page.getByRole('button', { name: '套用', exact: true }).click();
+
+  await expect(page.getByTestId('game-aggregate-score')).toHaveText('76.0');
+  await expect(page.getByText('game-linear-100-v1')).toBeVisible();
+  await expect(page.getByText(/-3 表示从综合分扣 3 分/)).toBeVisible();
+});
+
 test('game Toy keeps draft after reload and exposes save/share actions', async ({ page }) => {
   await page.goto('/');
   const title = page.getByLabel('游戏名称');

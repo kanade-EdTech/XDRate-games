@@ -76,6 +76,65 @@ describe('game template storage M1', () => {
     expect(restoredV2.catalog.templates).toHaveLength(4);
   });
 
+  it('refreshes the built-in Red Alert worldview default from the source catalog', () => {
+    const storage = memoryStorage();
+    const seeded = initializeGameTemplateCatalog(storage).catalog;
+    const redAlert = seeded.templates.find((template) => template.id === 'game-example-long-title');
+    if (!redAlert) throw new Error('Red Alert template missing');
+    const legacy = {
+      ...seeded,
+      templates: seeded.templates.map((template) =>
+        template.id === redAlert.id
+          ? {
+              ...template,
+              rating: {
+                ...template.rating,
+                axes: template.rating.axes.map((axis) =>
+                  axis.id === 'red-alert-world' ? { ...axis, score: 6, reason: '' } : axis,
+                ),
+              },
+            }
+          : template,
+      ),
+    };
+    storage.setItem(GAME_TEMPLATE_CATALOG_KEY, JSON.stringify(legacy));
+
+    const migrated = initializeGameTemplateCatalog(storage);
+    const worldview = migrated.catalog.templates
+      .find((template) => template.id === redAlert.id)
+      ?.rating.axes.find((axis) => axis.id === 'red-alert-world');
+    expect(migrated.status).toBe('migrated');
+    expect(worldview).toMatchObject({ score: 5, reason: '无厘头剧情毁童年' });
+
+    const staleBuiltIn = {
+      ...migrated.catalog,
+      templates: migrated.catalog.templates.map((template) =>
+        template.id === redAlert.id
+          ? {
+              ...template,
+              rating: {
+                ...template.rating,
+                axes: template.rating.axes.map((axis) =>
+                  axis.id === 'red-alert-world' ? { ...axis, score: 6, reason: '用户自定义' } : axis,
+                ),
+              },
+            }
+          : template,
+      ),
+    };
+    storage.setItem(GAME_TEMPLATE_CATALOG_KEY, JSON.stringify(staleBuiltIn));
+    const refreshed = initializeGameTemplateCatalog(storage);
+    const refreshedWorldview = refreshed.catalog.templates
+      .find((template) => template.id === redAlert.id)
+      ?.rating.axes.find((axis) => axis.id === 'red-alert-world');
+    expect(refreshed.status).toBe('migrated');
+    expect(refreshedWorldview).toMatchObject({
+      score: 5,
+      importanceLevel: 2,
+      reason: '无厘头剧情毁童年',
+    });
+  });
+
   it('keeps built-ins available in memory when Toy storage is blocked', () => {
     const blocked: GameTemplateStorageLike = {
       getItem: () => {
