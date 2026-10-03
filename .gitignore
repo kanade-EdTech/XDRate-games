@@ -62,8 +62,15 @@ web_modules/
 # Vite build output
 dist/
 dist-minitool/
+dist-minitool-game/
 dist-toy/
 artifacts/minitool/
+.archify/
+.playwright-cli/
+artifacts/legacy-v010-preview/
+artifacts/toy/
+artifacts/*.png
+output/
 src-tauri/target/
 .tauri-tmp/
 .tauri-localappdata/
